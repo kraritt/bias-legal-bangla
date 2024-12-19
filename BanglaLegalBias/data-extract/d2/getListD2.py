@@ -1,6 +1,6 @@
 def gen_txt_list(table, court):
 	codes = []
-	for item in table["process"]:
+	for item in table["মামলা_নম্বর"]:
 		codes.append(item.strip())
 
 	filename = "list_" + court + ".txt"
@@ -25,18 +25,18 @@ cn_jr = list(sheet_jr.columns)
 cn_jr1 = list(sheet_jr1.columns)
 cn_jr2 = list(sheet_jr2.columns)
 
-cn_jr3_new = ["process", "mag", "data_judgment", "whole_teor", "subject", 
-		       "alleged_pac", "accused_pac", "violence_woman", "violence_minor",
-			   "accused_violence", "result_violence", "proof_violence",
-			   "result_pac", "proof_pac"]
-cn_jr1_new = ["process", "mag", "stick", "data_judgment", "whole_teor", "subject", 
-		       "alleged_pac", "accused_pac", "violence_woman", "violence_minor",
-			   "accused_violence", "result_violence", "proof_violence",
-			   "result_pac", "proof_pac"]
-cn_si_new = ["process", "relator", "body_judging", "data_judgment", "type_resource", 
-			"collegiality", "whole_teor", "subject", "alleged_pac", "accused_pac", 
-			"violence_woman", "violence_minor", "accused_violence", "result_violence", "proof_violence",
-			"result_pac", "proof_pac"]
+cn_jr3_new = ["মামলা_নম্বর", "ম্যাজিস্ট্রেট", "রায়_তারিখ", "সম্পূর্ণ_রায়_উপলব্ধতা", "বিষয়", 
+		       "দাবিকারী", "অভিযুক্ত", "নারী সহিংসতা", "শিশু_সহিংসতা",
+			   "অভিযুক্ত_সহিংস", "রায়_সহিংসতা", "সহিংসতা_প্রমাণ",
+			   "রায়", "প্রমাণ"]
+cn_jr1_new = ["মামলা_নম্বর", "ম্যাজিস্ট্রেট", "আদালত_শাখা", "রায়_তারিখ", "সম্পূর্ণ_রায়_উপলব্ধতা", "বিষয়", 
+		       "দাবিকারী", "অভিযুক্ত", "নারী সহিংসতা", "শিশু_সহিংসতা",
+			   "অভিযুক্ত_সহিংস", "রায়_সহিংসতা", "সহিংসতা_প্রমাণ",
+			   "রায়", "প্রমাণ"]
+cn_si_new = ["মামলা_নম্বর", "বিচারক_রিপোর্টার", "রায়_প্রদান_সংস্থা", "রায়_তারিখ", "আপিল_ধরন", 
+			"সমষ্টিক_রায়", "সম্পূর্ণ_রায়_উপলব্ধতা", "বিষয়", "দাবিকারী", "অভিযুক্ত", 
+			"নারী_সহিংসতা", "শিশু_সহিংসতা", "অভিযুক্ত_সহিংস", "রায়_সহিংসতা", "সহিংসতা_প্রমাণ",
+			"রায়", "প্রমাণ"]
 
 dict_jr3 = {cn_jr3[0]: cn_jr3_new[0], cn_jr3[1]: cn_jr3_new[1], cn_jr3[2]: cn_jr3_new[2],
 				  cn_jr3[3]: cn_jr3_new[3], cn_jr3[4]: cn_jr3_new[4], cn_jr3[5]: cn_jr3_new[5],
@@ -74,14 +74,14 @@ sheet_jr1.rename(mapper=dict_jr1, axis=1, inplace=True)
 sheet_jr2.rename(mapper=dict_jr2, axis=1, inplace=True)
 
 
-jr3_violence = sheet_jr3.loc[sheet_jr3['violence_minor'].str.contains('sexual', na=False)]
-jr4_violence = sheet_jr4.loc[sheet_jr4['violence_minor'].str.contains('sexual', na=False)]
-jr_violence = sheet_jr.loc[sheet_jr['violence_minor'].str.contains('sexual', na=False)]
-jr1_violence = sheet_jr1.loc[sheet_jr1['violence_minor'].str.contains('sexual', na=False)]
-jr2_violence = sheet_jr2.loc[sheet_jr2['violence_minor'].str.contains('sexual', na=False)]
+jr3_violence = sheet_jr3.loc[sheet_jr3['শিশু_সহিংসতা'].str.contains('যৌন', na=False)]
+jr4_violence = sheet_jr4.loc[sheet_jr4['শিশু_সহিংসতা'].str.contains('যৌন', na=False)]
+jr_violence = sheet_jr.loc[sheet_jr['শিশু_সহিংসতা'].str.contains('যৌন', na=False)]
+jr1_violence = sheet_jr1.loc[sheet_jr1['শিশু_সহিংসতা'].str.contains('যৌন', na=False)]
+jr2_violence = sheet_jr2.loc[sheet_jr2['শিশু_সহিংসতা'].str.contains('যৌন', na=False)]
 
 gen_txt_list(jr3_violence, "jr3")
-gen_txt_list(jr4_violence, "jr4")
+gen_txt_list(jr4_violence, "jr4") 
 gen_txt_list(jr_violence, "jr")
 gen_txt_list(jr1_violence, "jr1")
 gen_txt_list(jr2_violence, "jr2")
