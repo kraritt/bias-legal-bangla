@@ -3,7 +3,7 @@ table = pd.read_excel("process with status.xlsx")
 
 
 codes = []
-for item in table["process"]:
+for item in table["মামলা_নম্বর"]:
 	codes.append(item)
 
 with open("list_process.txt", "w") as f:
