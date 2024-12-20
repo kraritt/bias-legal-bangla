@@ -147,9 +147,9 @@ def main():
     texts = []
     bias = []
     for item in data.values():
-        for text in item['bias_context']:
+        for text in item['পক্ষপাত_প্রসঙ্গ']:
             texts.append(text)
-            bias.append(1 if item["bias"] != '' else 0)
+            bias.append(1 if item["পক্ষপাত"] != '' else 0)
 
     orig_texts = texts.copy()
 	
